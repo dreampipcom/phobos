@@ -1,18 +1,39 @@
 {
   "name": "@dreampipcom/phantasus",
+  "productName": "DreamPip",
   "version": "0.0.1",
   "description": "DreamPip's Electron App",
-  "main": "index.js",
-  "scripts": {
-    "build": "tsc",
-    "watch": "tsc -w",
-    "lint": "eslint -c .eslintrc --ext .ts ./src",
-    "start": "npm run build && electron ./dist/main.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "main": ".vite/build/main.js",
+  "build": {
+    "appID": "@dreampipcom/phantasus",
+    "productName": "DreamPip",
+    "icon": "icons/icon@1x.png"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/dreampipcom/phantasus.git"
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish",
+    "lint": "eslint --ext .ts,.tsx ."
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^7.4.0",
+    "@electron-forge/maker-deb": "^7.4.0",
+    "@electron-forge/maker-rpm": "^7.4.0",
+    "@electron-forge/maker-squirrel": "^7.4.0",
+    "@electron-forge/maker-zip": "^7.4.0",
+    "@electron-forge/plugin-auto-unpack-natives": "^7.4.0",
+    "@electron-forge/plugin-fuses": "^7.4.0",
+    "@electron-forge/plugin-vite": "^7.4.0",
+    "@electron/fuses": "^1.8.0",
+    "@typescript-eslint/eslint-plugin": "^5.62.0",
+    "@typescript-eslint/parser": "^5.62.0",
+    "electron": "31.3.1",
+    "eslint": "^8.57.0",
+    "eslint-plugin-import": "^2.29.1",
+    "ts-node": "^10.9.2",
+    "typescript": "~4.5.4",
+    "vite": "^5.3.5"
   },
   "keywords": [
     "Electron.js",
@@ -20,20 +41,12 @@
     "Linux",
     "Windows"
   ],
-  "author": "Angelo Reale",
-  "license": "HPL3-ECO-AND-ANC",
-  "bugs": {
-    "url": "https://github.com/dreampipcom/phantasus/issues"
+  "author": {
+    "name": "Angelo Reale",
+    "email": "12191809+angeloreale@users.noreply.github.com"
   },
-  "homepage": "https://github.com/dreampipcom/phantasus#readme",
-  "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^8.0.0",
-    "@typescript-eslint/parser": "^8.0.0",
-    "electron": "^31.3.1",
-    "eslint": "^9.8.0",
-    "eslint-config-alloy": "^5.1.2",
-    "prettier": "^3.3.3",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.5.4"
+  "license": "MIT",
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.1"
   }
 }
