@@ -1,3 +1,4 @@
+/* eslint @typescript-eslint/no-require-imports:0 */
 import { app, BrowserWindow } from 'electron';
 import path from 'path';
 
@@ -6,7 +7,7 @@ if (require('electron-squirrel-startup')) {
   app.quit();
 }
 
-const MAIN_WINDOW_VITE_DEV_SERVER_URL="http://localhost:3000"
+const MAIN_WINDOW_VITE_DEV_SERVER_URL = 'http://localhost:3000';
 
 const createWindow = () => {
   // Create the browser window.

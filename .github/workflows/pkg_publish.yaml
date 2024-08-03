@@ -1,0 +1,72 @@
+name: phantasus::compile
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish-package-linux:
+    name: phantasus::compile::package-linux
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: phantasus::compile::package-linux::Check out Git repository
+        uses: actions/checkout@v3
+
+      - name: phantasus::compile::package-linux::Set up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 20
+
+      - name: phantasus::compile::package-linux::Install Node.js dependencies
+        run: npm ci
+
+      - name: phantasus::compile::package-linux::Compile
+        run: npm run build:linux
+
+      - name: phantasus::compile::package-linux::Publish
+        run: npm run publish
+
+  publish-package-macos:
+    name: phantasus::compile::package-macos
+    runs-on: macOS-latest
+
+    steps:
+      - name: phantasus::compile::package-macos::Check out Git repository
+        uses: actions/checkout@v3
+
+      - name: phantasus::compile::package-macos::Set up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 20
+
+      - name: phantasus::compile::package-macos::Install Node.js dependencies
+        run: npm ci
+
+      - name: phantasus::compile::package-macos::Compile
+        run: npm run build:macos
+
+      - name: phantasus::compile::package-macos::Publish
+        run: npm run publish
+
+  publish-package-windows:
+    name: phantasus::compile::package-win
+    runs-on: windows-latest
+
+    steps:
+      - name: phantasus::compile::package-win::Check out Git repository
+        uses: actions/checkout@v3
+
+      - name: phantasus::compile::package-win::Set up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 20
+
+      - name: phantasus::compile::package-win::Install Node.js dependencies
+        run: npm ci
+
+      - name: phantasus::compile::package-win::Compile
+        run: npm run build:win
+
+      - name: phantasus::compile::package-win::Publish
+        run: npm run publish

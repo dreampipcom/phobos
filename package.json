@@ -10,8 +10,11 @@
     "icon": "icons/icon@1x.png"
   },
   "scripts": {
+    "build": "npm run package",
     "start": "electron-forge start",
     "package": "electron-forge package",
+    "format": "npm run lint && prettier --check --ignore-path .gitignore --ignore-path .prettierignore .",
+    "format:fix": "npm run lint --fix && prettier --write --ignore-path .gitignore --ignore-path .prettierignore .",
     "package:all": "npm run make -- --platform win32 && npm run make -- --platform linux && npm run make -- --platform darwin",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
@@ -31,9 +34,11 @@
     "@typescript-eslint/parser": "^5.62.0",
     "electron": "31.3.1",
     "eslint": "^8.57.0",
+    "eslint-config-alloy": "^5.1.2",
     "eslint-plugin-import": "^2.29.1",
+    "prettier": "^3.3.3",
     "ts-node": "^10.9.2",
-    "typescript": "~4.5.4",
+    "typescript": "^5",
     "vite": "^5.3.5"
   },
   "keywords": [
@@ -46,7 +51,7 @@
     "name": "Angelo Reale",
     "email": "12191809+angeloreale@users.noreply.github.com"
   },
-  "license": "MIT",
+  "license": "HPL3-ECO-AND-ANC",
   "dependencies": {
     "electron-squirrel-startup": "^1.0.1"
   }

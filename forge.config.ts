@@ -14,14 +14,20 @@ const config: ForgeConfig = {
     icon: './icons/icon',
   },
   rebuildConfig: {},
-  makers: [new MakerSquirrel({}), new MakerZIP({}, ['darwin']), new MakerRpm({}), new MakerDeb({}), {
+  makers: [
+    new MakerSquirrel({}),
+    new MakerZIP({}, ['darwin']),
+    new MakerRpm({}),
+    new MakerDeb({}),
+    {
       name: '@electron-forge/maker-deb',
-        config: {
-          options: {
-            icon: './icons/icon@1x.png'
-          }
-      }
-    }],
+      config: {
+        options: {
+          icon: './icons/icon@1x.png',
+        },
+      },
+    },
+  ],
   plugins: [
     new VitePlugin({
       // `build` can specify multiple entry builds, which can be Main process, Preload scripts, Worker process, etc.
@@ -62,13 +68,13 @@ const config: ForgeConfig = {
       config: {
         repository: {
           owner: 'dreampipcom',
-          name: 'phantasus'
+          name: 'phantasus',
         },
         prerelease: true,
         generateReleaseNotes: true,
-      }
-    }
-  ]
+      },
+    },
+  ],
 };
 
 export default config;
