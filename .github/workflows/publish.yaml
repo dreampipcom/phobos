@@ -9,41 +9,21 @@ on:
       - main/*
 
 jobs:
-  run-build:
-    name: phantasus::checks::build
+  run-publish:
+    name: phantasus::checks::publish
     runs-on: ubuntu-latest
 
     steps:
-      - name: phantasus::checks::build::Check out Git repository
+      - name: phantasus::checks::publish::Check out Git repository
         uses: actions/checkout@v3
 
-      - name: phantasus::checks::build::Set up Node.js
+      - name: phantasus::checks::publish::Set up Node.js
         uses: actions/setup-node@v1
         with:
           node-version: 20
 
-      - name: phantasus::checks::build::Install Node.js dependencies
+      - name: phantasus::checks::publish::Install Node.js dependencies
         run: npm ci
 
-      - name: phantasus::checks::build::Build
+      - name: phantasus::checks::publish::Build
         run: npm run build
-
-  run-lint:
-    name: phantasus::checks::lint
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: phantasus::checks::lint::Check out Git repository
-        uses: actions/checkout@v3
-
-      - name: phantasus::checks::lint::Set up Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: 20
-
-      # ESLint and Prettier must be in `package.json`
-      - name: phantasus::checks::lint::Install Node.js dependencies
-        run: npm ci
-
-      - name: phantasus::checks::lint::Run linters
-        run: npm run format
