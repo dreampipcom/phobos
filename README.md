@@ -1,4 +1,4 @@
-# Phantasus - DreamPip's Desktop Apps
+# Phantasus - DreamPip's Desktop App
 
 What: Electron Webview
 
