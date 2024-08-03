@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from "electron";
+import { app, BrowserWindow,BaseWindow, WebContentsView } from "electron";
 import * as path from "path";
 
 function createWindow() {
@@ -11,11 +11,21 @@ function createWindow() {
     width: 800,
   });
 
+ 	// const localNyx = new WebContentsView()
+	// mainWindow.contentView.addChildView(view1)
+	// view1.webContents.loadURL('https://electronjs.org')
+	// view1.setBounds({ x: 0, y: 0, width: 400, height: 400 })
+
+	const alphaNyx = new WebContentsView()
+	mainWindow.contentView.addChildView(alphaNyx)
+	alphaNyx.webContents.loadURL('https://alpha.dreampip.com?electron=1')
+	alphaNyx.setBounds({ x: 0, y: 0, width: 800, height: 600 })
+
   // and load the index.html of the app.
-  mainWindow.loadFile(path.join(__dirname, "../index.html"));
+  // mainWindow.loadFile(path.join(__dirname, "../index.html"));
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  // mainWindow.webContents.openDevTools();
 }
 
 // This method will be called when Electron has finished
