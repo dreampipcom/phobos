@@ -1,3 +1,4 @@
+/* eslint @typescript-eslint/consistent-type-imports:0 */
 export {}; // Make this a module
 
 declare global {

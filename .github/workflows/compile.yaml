@@ -65,4 +65,3 @@ jobs:
 
       - name: phantasus::checks::package-win::Build
         run: npm run build
-
