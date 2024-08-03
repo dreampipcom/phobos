@@ -1,4 +1,4 @@
-# Phantasus - DreamPip's Desktop App
+# Phobos - DreamPip's Desktop App
 
 What: Electron Webview
 
@@ -12,7 +12,7 @@ npm run start
 
 Documentation: TBD
 
-LTS Binaries: https://github.com/dreampipcom/phantasus/releases
+LTS Binaries: https://github.com/dreampipcom/phobos/releases
 
 License: HPL3-ECO-AND-ANC 2021—Present
 

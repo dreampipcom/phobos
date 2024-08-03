@@ -1,11 +1,11 @@
 {
-  "name": "@dreampipcom/phantasus",
+  "name": "@dreampipcom/phobos",
   "productName": "DreamPip",
   "version": "0.0.1",
-  "description": "DreamPip's Electron App",
+  "description": "DreamPip's Desktop App",
   "main": ".vite/build/main.js",
   "build": {
-    "appID": "@dreampipcom/phantasus",
+    "appID": "@dreampipcom/phobos",
     "productName": "DreamPip",
     "icon": "icons/icon@1x.png"
   },

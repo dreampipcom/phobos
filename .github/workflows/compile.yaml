@@ -1,4 +1,4 @@
-name: phantasus::checks
+name: phobos::checks
 
 on:
   pull_request:
@@ -10,58 +10,58 @@ on:
 
 jobs:
   run-package-linux:
-    name: phantasus::checks::package-linux
+    name: phobos::checks::package-linux
     runs-on: ubuntu-latest
 
     steps:
-      - name: phantasus::checks::package-linux::Check out Git repository
+      - name: phobos::checks::package-linux::Check out Git repository
         uses: actions/checkout@v3
 
-      - name: phantasus::checks::package-linux::Set up Node.js
+      - name: phobos::checks::package-linux::Set up Node.js
         uses: actions/setup-node@v1
         with:
           node-version: 20
 
-      - name: phantasus::checks::package-linux::Install Node.js dependencies
+      - name: phobos::checks::package-linux::Install Node.js dependencies
         run: npm ci
 
-      - name: phantasus::checks::package-linux::Build
+      - name: phobos::checks::package-linux::Build
         run: npm run build
 
   run-package-macos:
-    name: phantasus::checks::package-macos
+    name: phobos::checks::package-macos
     runs-on: macOS-latest
 
     steps:
-      - name: phantasus::checks::package-macos::Check out Git repository
+      - name: phobos::checks::package-macos::Check out Git repository
         uses: actions/checkout@v3
 
-      - name: phantasus::checks::package-macos::Set up Node.js
+      - name: phobos::checks::package-macos::Set up Node.js
         uses: actions/setup-node@v1
         with:
           node-version: 20
 
-      - name: phantasus::checks::package-macos::Install Node.js dependencies
+      - name: phobos::checks::package-macos::Install Node.js dependencies
         run: npm ci
 
-      - name: phantasus::checks::package-macos::Build
+      - name: phobos::checks::package-macos::Build
         run: npm run build
 
   run-package-windows:
-    name: phantasus::checks::package-win
+    name: phobos::checks::package-win
     runs-on: windows-latest
 
     steps:
-      - name: phantasus::checks::package-win::Check out Git repository
+      - name: phobos::checks::package-win::Check out Git repository
         uses: actions/checkout@v3
 
-      - name: phantasus::checks::package-win::Set up Node.js
+      - name: phobos::checks::package-win::Set up Node.js
         uses: actions/setup-node@v1
         with:
           node-version: 20
 
-      - name: phantasus::checks::package-win::Install Node.js dependencies
+      - name: phobos::checks::package-win::Install Node.js dependencies
         run: npm ci
 
-      - name: phantasus::checks::package-win::Build
+      - name: phobos::checks::package-win::Build
         run: npm run build

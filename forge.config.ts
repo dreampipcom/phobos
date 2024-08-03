@@ -68,7 +68,7 @@ const config: ForgeConfig = {
       config: {
         repository: {
           owner: 'dreampipcom',
-          name: 'phantasus',
+          name: 'phobos',
         },
         prerelease: true,
         generateReleaseNotes: true,
