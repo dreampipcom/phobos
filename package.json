@@ -1,0 +1,25 @@
+{
+  "name": "@dreampipcom/phantasus",
+  "version": "0.0.1",
+  "description": "DreamPip's Electron App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/dreampipcom/phantasus.git"
+  },
+  "keywords": [
+    "Electron.js",
+    "MacOS",
+    "Linux",
+    "Windows"
+  ],
+  "author": "Angelo Reale",
+  "license": "HPL3-ECO-AND-ANC",
+  "bugs": {
+    "url": "https://github.com/dreampipcom/phantasus/issues"
+  },
+  "homepage": "https://github.com/dreampipcom/phantasus#readme"
+}
