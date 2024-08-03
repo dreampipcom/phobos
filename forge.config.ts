@@ -11,14 +11,14 @@ const config: ForgeConfig = {
   packagerConfig: {
     name: 'DreamPip',
     asar: true,
-    icon: './icons',
+    icon: './icons/icon',
   },
   rebuildConfig: {},
   makers: [new MakerSquirrel({}), new MakerZIP({}, ['darwin']), new MakerRpm({}), new MakerDeb({}), {
       name: '@electron-forge/maker-deb',
         config: {
           options: {
-            icon: './icons'
+            icon: './icons/icon@1x.png'
           }
       }
     }],
