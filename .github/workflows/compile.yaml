@@ -1,0 +1,68 @@
+name: phantasus::checks
+
+on:
+  pull_request:
+    branches:
+      - dev
+      - dev/*
+      - main
+      - main/*
+
+jobs:
+  run-package-linux:
+    name: phantasus::checks::package-linux
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: phantasus::checks::package-linux::Check out Git repository
+        uses: actions/checkout@v3
+
+      - name: phantasus::checks::package-linux::Set up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 20
+
+      - name: phantasus::checks::package-linux::Install Node.js dependencies
+        run: npm ci
+
+      - name: phantasus::checks::package-linux::Build
+        run: npm run build
+
+  run-package-macos:
+    name: phantasus::checks::package-macos
+    runs-on: macOS-latest
+
+    steps:
+      - name: phantasus::checks::package-macos::Check out Git repository
+        uses: actions/checkout@v3
+
+      - name: phantasus::checks::package-macos::Set up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 20
+
+      - name: phantasus::checks::package-macos::Install Node.js dependencies
+        run: npm ci
+
+      - name: phantasus::checks::package-macos::Build
+        run: npm run build
+
+  run-package-windows:
+    name: phantasus::checks::package-win
+    runs-on: windows-2016
+
+    steps:
+      - name: phantasus::checks::package-win::Check out Git repository
+        uses: actions/checkout@v3
+
+      - name: phantasus::checks::package-win::Set up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 20
+
+      - name: phantasus::checks::package-win::Install Node.js dependencies
+        run: npm ci
+
+      - name: phantasus::checks::package-win::Build
+        run: npm run build
+

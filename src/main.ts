@@ -6,7 +6,7 @@ if (require('electron-squirrel-startup')) {
   app.quit();
 }
 
-const MAIN_WINDOW_VITE_DEV_SERVER_URL="https://alpha.dreampip.com"
+const MAIN_WINDOW_VITE_DEV_SERVER_URL="http://localhost:3000"
 
 const createWindow = () => {
   // Create the browser window.

@@ -12,6 +12,7 @@
   "scripts": {
     "start": "electron-forge start",
     "package": "electron-forge package",
+    "package:all": "npm run make -- --platform win32 && npm run make -- --platform linux && npm run make -- --platform darwin",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
     "lint": "eslint --ext .ts,.tsx ."
