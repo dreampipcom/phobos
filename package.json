@@ -10,6 +10,7 @@
     "icon": "icons/icon@1x.png"
   },
   "scripts": {
+    "build": "npm run package",
     "start": "electron-forge start",
     "package": "electron-forge package",
     "format": "npm run lint && prettier --check --ignore-path .gitignore --ignore-path .prettierignore .",
