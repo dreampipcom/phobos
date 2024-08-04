@@ -1,4 +1,4 @@
-name: phobos::checks
+name: phobos::compile
 
 on:
   pull_request:
