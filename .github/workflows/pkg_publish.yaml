@@ -8,6 +8,9 @@ jobs:
   publish-package-linux:
     name: phobos::compile::package-linux
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
 
     steps:
       - name: phobos::compile::package-linux::Check out Git repository
@@ -32,6 +35,9 @@ jobs:
   publish-package-macos:
     name: phobos::compile::package-macos
     runs-on: macOS-latest
+    permissions:
+      contents: write
+      packages: write
 
     steps:
       - name: phobos::compile::package-macos::Check out Git repository
@@ -56,6 +62,9 @@ jobs:
   publish-package-windows:
     name: phobos::compile::package-win
     runs-on: windows-latest
+    permissions:
+      contents: write
+      packages: write
 
     steps:
       - name: phobos::compile::package-win::Check out Git repository
