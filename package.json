@@ -9,7 +9,6 @@
       "executableName": "@dreampipcom/phobos"
   },
   "build": {
-    "appID": "DreamPip",
     "productName": "DreamPip",
     "icon": "icons/icon@1x.png"
   },
