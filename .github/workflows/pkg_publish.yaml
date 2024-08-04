@@ -6,82 +6,82 @@ on:
 
 jobs:
   publish-package-linux:
-    name: phobos::compile::package-linux
+    name: phobos::Publish::package-linux
     runs-on: ubuntu-latest
     permissions:
       contents: write
       packages: write
 
     steps:
-      - name: phobos::compile::package-linux::Check out Git repository
+      - name: phobos::Publish::package-linux::Check out Git repository
         uses: actions/checkout@v3
 
-      - name: phobos::compile::package-linux::Set up Node.js
+      - name: phobos::Publish::package-linux::Set up Node.js
         uses: actions/setup-node@v1
         with:
           node-version: 20
 
-      - name: phobos::compile::package-linux::Install Node.js dependencies
+      - name: phobos::Publish::package-linux::Install Node.js dependencies
         run: npm ci
 
-      - name: phobos::compile::package-linux::Compile
+      - name: phobos::Publish::package-linux::Compile
         run: npm run build
 
-      - name: phobos::compile::package-linux::Publish
+      - name: phobos::Publish::package-linux::Publish
         run: npm run publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   publish-package-macos:
-    name: phobos::compile::package-macos
+    name: phobos::Publish::package-macos
     runs-on: macOS-latest
     permissions:
       contents: write
       packages: write
 
     steps:
-      - name: phobos::compile::package-macos::Check out Git repository
+      - name: phobos::Publish::package-macos::Check out Git repository
         uses: actions/checkout@v3
 
-      - name: phobos::compile::package-macos::Set up Node.js
+      - name: phobos::Publish::package-macos::Set up Node.js
         uses: actions/setup-node@v1
         with:
           node-version: 20
 
-      - name: phobos::compile::package-macos::Install Node.js dependencies
+      - name: phobos::Publish::package-macos::Install Node.js dependencies
         run: npm ci
 
-      - name: phobos::compile::package-macos::Compile
+      - name: phobos::Publish::package-macos::Compile
         run: npm run build
 
-      - name: phobos::compile::package-macos::Publish
+      - name: phobos::Publish::package-macos::Publish
         run: npm run publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   publish-package-windows:
-    name: phobos::compile::package-win
+    name: phobos::Publish::package-win
     runs-on: windows-latest
     permissions:
       contents: write
       packages: write
 
     steps:
-      - name: phobos::compile::package-win::Check out Git repository
+      - name: phobos::Publish::package-win::Check out Git repository
         uses: actions/checkout@v3
 
-      - name: phobos::compile::package-win::Set up Node.js
+      - name: phobos::Publish::package-win::Set up Node.js
         uses: actions/setup-node@v1
         with:
           node-version: 20
 
-      - name: phobos::compile::package-win::Install Node.js dependencies
+      - name: phobos::Publish::package-win::Install Node.js dependencies
         run: npm ci
 
-      - name: phobos::compile::package-win::Compile
+      - name: phobos::Publish::package-win::Compile
         run: npm run build
 
-      - name: phobos::compile::package-win::Publish
+      - name: phobos::Publish::package-win::Publish
         run: npm run publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
