@@ -43,9 +43,7 @@ const createWindow = () => {
   // mainWindow.webContents.openDevTools();
 };
 
-
-// Create mainWindow, load the rest of the app, etc...
-app.whenReady().then(() => {
+const itsReady = () => {
   var mainWindow = createWindow()
 
   app.on('second-instance', (event, commandLine, workingDirectory) => {
@@ -61,7 +59,7 @@ app.whenReady().then(() => {
 
   // Handle the protocol. In this case, we choose to show an Error Box.
   app.on('open-url', (event, url) => {
-    dialog.showErrorBox('Welcome Back', `You arrived from: ${url}`)
+    // dialog.showErrorBox('Welcome Back', `You arrived from: ${url}`)
 
     if (mainWindow) {
       if (mainWindow.isMinimized()) mainWindow.restore()
@@ -71,14 +69,17 @@ app.whenReady().then(() => {
       mainWindow.loadURL(url.replace('web+dreampip://', 'http://'))
     }
   })
+}
 
-})
 
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', createWindow);
+app.on('ready', () => {});
+
+// Create mainWindow, load the rest of the app, etc...
+app.whenReady().then(itsReady)
 
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits
@@ -93,7 +94,7 @@ app.on('activate', () => {
   // On OS X it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
   if (BrowserWindow.getAllWindows().length === 0) {
-    mainWindow =createWindow();
+    mainWindow = createWindow();
   }
 });
 
