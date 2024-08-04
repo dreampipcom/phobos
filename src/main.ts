@@ -1,5 +1,5 @@
 /* eslint @typescript-eslint/no-require-imports:0 */
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, dialog } from 'electron';
 import path from 'path';
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
@@ -7,7 +7,19 @@ if (require('electron-squirrel-startup')) {
   app.quit();
 }
 
+if (process.defaultApp) {
+  if (process.argv.length >= 2) {
+    app.setAsDefaultProtocolClient('web+dreampip', process.execPath, [path.resolve(process.argv[1])])
+  }
+} else {
+  app.setAsDefaultProtocolClient('web+dreampip')
+}
+
 const MAIN_WINDOW_VITE_DEV_SERVER_URL = 'http://localhost:3000';
+
+const gotTheLock = true || app.requestSingleInstanceLock()
+
+let mainWindow
 
 const createWindow = () => {
   // Create the browser window.
@@ -25,10 +37,34 @@ const createWindow = () => {
   } else {
     mainWindow.loadFile(path.join(__dirname, `../renderer/${MAIN_WINDOW_VITE_NAME}/index.html`));
   }
-
   // Open the DevTools.
   // mainWindow.webContents.openDevTools();
 };
+
+
+// Create mainWindow, load the rest of the app, etc...
+app.whenReady().then(() => {
+  var mainWindow = createWindow()
+
+  app.on('second-instance', (event, commandLine, workingDirectory) => {
+    // Someone tried to run a second instance, we should focus our window.
+    if (mainWindow) {
+      if (mainWindow.isMinimized()) mainWindow.restore()
+      mainWindow.focus()
+    }
+    // the commandLine is array of strings in which last element is deep link url
+    // dialog.showErrorBox('Welcome Back', `You arrived from: ${commandLine.pop()}`)
+    mainWindow.loadURL(commandLine.pop().replace('web+dreampip://', 'http://'))
+  })
+
+  // Handle the protocol. In this case, we choose to show an Error Box.
+  app.on('open-url', (event, url) => {
+    dialog.showErrorBox('Welcome Back', `You arrived from: ${url}`)
+    mainWindow.loadURL(commandLine.pop().replace('web+dreampip://', 'http://'))
+  })
+
+})
+
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
@@ -48,7 +84,7 @@ app.on('activate', () => {
   // On OS X it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
   if (BrowserWindow.getAllWindows().length === 0) {
-    createWindow();
+    mainWindow =createWindow();
   }
 });
 
