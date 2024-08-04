@@ -5,8 +5,8 @@
   "description": "DreamPip's Desktop App",
   "main": ".vite/build/main.js",
   "packagerConfig": {
-      "name": "@dreampipcom/phobos",
-      "executableName": "@dreampipcom/phobos"
+    "name": "@dreampipcom/phobos",
+    "executableName": "@dreampipcom/phobos"
   },
   "build": {
     "productName": "DreamPip",

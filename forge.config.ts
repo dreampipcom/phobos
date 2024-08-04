@@ -10,6 +10,7 @@ import { FuseV1Options, FuseVersion } from '@electron/fuses';
 const config: ForgeConfig = {
   packagerConfig: {
     name: 'DreamPip',
+    executableName: '@dreampipcom/phobos',
     asar: true,
     icon: './icons/icon',
   },
