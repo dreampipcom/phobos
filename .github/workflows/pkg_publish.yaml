@@ -32,29 +32,56 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  publish-package-macos:
-    name: phobos::Publish::package-macos
-    runs-on: macOS-latest
+  publish-package-macos-arm64:
+    name: phobos::Publish::package-macos-arm64
+    runs-on: macos-latest
     permissions:
       contents: write
       packages: write
 
     steps:
-      - name: phobos::Publish::package-macos::Check out Git repository
+      - name: phobos::Publish::package-macos-arm64::Check out Git repository
         uses: actions/checkout@v3
 
-      - name: phobos::Publish::package-macos::Set up Node.js
+      - name: phobos::Publish::package-macos-arm64::Set up Node.js
         uses: actions/setup-node@v1
         with:
           node-version: 20
 
-      - name: phobos::Publish::package-macos::Install Node.js dependencies
+      - name: phobos::Publish::package-macos-arm64::Install Node.js dependencies
         run: npm ci
 
-      - name: phobos::Publish::package-macos::Compile
+      - name: phobos::Publish::package-macos-arm64::Compile
         run: npm run build
 
-      - name: phobos::Publish::package-macos::Publish
+      - name: phobos::Publish::package-macos-arm64::Publish
+        run: npm run publish
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  publish-package-macos-x64:
+    name: phobos::Publish::package-macos-x64
+    runs-on: macos-latest-large
+    permissions:
+      contents: write
+      packages: write
+
+    steps:
+      - name: phobos::Publish::package-macos-x64::Check out Git repository
+        uses: actions/checkout@v3
+
+      - name: phobos::Publish::package-macos-x64::Set up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 20
+
+      - name: phobos::Publish::package-macos-x64::Install Node.js dependencies
+        run: npm ci
+
+      - name: phobos::Publish::package-macos-x64::Compile
+        run: npm run build
+
+      - name: phobos::Publish::package-macos-x64::Publish
         run: npm run publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

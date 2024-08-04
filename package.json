@@ -12,7 +12,7 @@
   "scripts": {
     "build": "npm run package",
     "start": "electron-forge start",
-    "package": "electron-forge package --arch universal",
+    "package": "electron-forge package",
     "format": "npm run lint && prettier --check --ignore-path .gitignore --ignore-path .prettierignore .",
     "format:fix": "npm run lint --fix && prettier --write --ignore-path .gitignore --ignore-path .prettierignore .",
     "package:all": "npm run make -- --platform win32 && npm run make -- --platform linux && npm run make -- --platform darwin",
