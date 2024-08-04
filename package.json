@@ -12,7 +12,7 @@
   "scripts": {
     "build": "npm run package",
     "start": "electron-forge start",
-    "package": "electron-forge package",
+    "package": "electron-forge package --arch universal",
     "format": "npm run lint && prettier --check --ignore-path .gitignore --ignore-path .prettierignore .",
     "format:fix": "npm run lint --fix && prettier --write --ignore-path .gitignore --ignore-path .prettierignore .",
     "package:all": "npm run make -- --platform win32 && npm run make -- --platform linux && npm run make -- --platform darwin",
@@ -31,6 +31,7 @@
     "@electron-forge/plugin-vite": "^7.4.0",
     "@electron-forge/publisher-github": "^7.4.0",
     "@electron/fuses": "^1.8.0",
+    "@electron/universal": "github:electron/universal",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@typescript-eslint/parser": "^5.62.0",
     "electron": "31.3.1",
