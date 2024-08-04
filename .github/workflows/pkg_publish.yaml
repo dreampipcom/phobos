@@ -26,6 +26,8 @@ jobs:
 
       - name: phobos::compile::package-linux::Publish
         run: npm run publish
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   publish-package-macos:
     name: phobos::compile::package-macos
@@ -48,6 +50,8 @@ jobs:
 
       - name: phobos::compile::package-macos::Publish
         run: npm run publish
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   publish-package-windows:
     name: phobos::compile::package-win
@@ -70,3 +74,5 @@ jobs:
 
       - name: phobos::compile::package-win::Publish
         run: npm run publish
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
