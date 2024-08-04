@@ -9,17 +9,13 @@ if (require('electron-squirrel-startup')) {
 
 if (process.defaultApp) {
   if (process.argv.length >= 2) {
-    app.setAsDefaultProtocolClient('web+dreampip', process.execPath, [path.resolve(process.argv[1])])
+    app.setAsDefaultProtocolClient('web+dreampip', process.execPath, [path.resolve(process.argv[1])]);
   }
 } else {
-  app.setAsDefaultProtocolClient('web+dreampip')
+  app.setAsDefaultProtocolClient('web+dreampip');
 }
 
 const MAIN_WINDOW_VITE_DEV_SERVER_URL = 'https://alpha.dreampip.com';
-
-const gotTheLock = true || app.requestSingleInstanceLock()
-
-let mainWindow
 
 const createWindow = () => {
   // Create the browser window.
@@ -38,40 +34,38 @@ const createWindow = () => {
     mainWindow.loadFile(path.join(__dirname, `../renderer/${MAIN_WINDOW_VITE_NAME}/index.html`));
   }
 
-  return mainWindow
+  return mainWindow;
   // Open the DevTools.
   // mainWindow.webContents.openDevTools();
 };
 
 const itsReady = () => {
-  var mainWindow = createWindow()
+  const mainWindow = createWindow();
 
-  app.on('second-instance', (event, commandLine, workingDirectory) => {
+  app.on('second-instance', (event, commandLine) => {
     // Someone tried to run a second instance, we should focus our window.
     if (mainWindow) {
-      if (mainWindow.isMinimized()) mainWindow.restore()
-      mainWindow.focus()
-          // the commandLine is array of strings in which last element is deep link url
-      dialog.showErrorBox('Welcome Back', `You arrived from: ${commandLine.pop()}`)
-      mainWindow.loadURL(commandLine.pop().replace('web+dreampip://', 'http://'))
+      if (mainWindow.isMinimized()) mainWindow.restore();
+      mainWindow.focus();
+      // the commandLine is array of strings in which last element is deep link url
+      dialog.showErrorBox('Welcome Back', `You arrived from: ${commandLine.pop()}`);
+      mainWindow.loadURL(commandLine.pop().replace('web+dreampip://', 'http://'));
     }
-  })
+  });
 
   // Handle the protocol. In this case, we choose to show an Error Box.
   app.on('open-url', (event, url) => {
     // dialog.showErrorBox('Welcome Back', `You arrived from: ${url}`)
 
     if (mainWindow) {
-      if (mainWindow.isMinimized()) mainWindow.restore()
-      mainWindow.focus()
-          // the commandLine is array of strings in which last element is deep link url
+      if (mainWindow.isMinimized()) mainWindow.restore();
+      mainWindow.focus();
+      // the commandLine is array of strings in which last element is deep link url
       // dialog.showErrorBox('Welcome Back', `You arrived from: ${commandLine.pop()}`)
-      mainWindow.loadURL(url.replace('web+dreampip://', 'http://'))
+      mainWindow.loadURL(url.replace('web+dreampip://', 'http://'));
     }
-  })
-}
-
-
+  });
+};
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
@@ -79,7 +73,7 @@ const itsReady = () => {
 app.on('ready', () => {});
 
 // Create mainWindow, load the rest of the app, etc...
-app.whenReady().then(itsReady)
+app.whenReady().then(itsReady);
 
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits
