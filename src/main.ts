@@ -15,7 +15,7 @@ if (process.defaultApp) {
   app.setAsDefaultProtocolClient('web+dreampip')
 }
 
-const MAIN_WINDOW_VITE_DEV_SERVER_URL = 'http://localhost:3000';
+const MAIN_WINDOW_VITE_DEV_SERVER_URL = 'https://alpha.dreampip.com';
 
 const gotTheLock = true || app.requestSingleInstanceLock()
 
