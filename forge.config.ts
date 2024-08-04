@@ -16,20 +16,15 @@ const config: ForgeConfig = {
   },
   rebuildConfig: {},
   makers: [
-    new MakerSquirrel({
-      name: 'DreamPip',
-    }),
+    new MakerSquirrel({}),
     new MakerZIP({}, ['darwin']),
     new MakerRpm({}),
-    new MakerDeb({}),
-    {
-      name: '@electron-forge/maker-deb',
-      config: {
-        options: {
-          icon: './icons/icon@1x.png',
-        },
+    new MakerDeb({
+      options: {
+        name: 'DreamPip',
+        icon: './icons/icon@1x.png',
       },
-    },
+    }),
   ],
   plugins: [
     new VitePlugin({
