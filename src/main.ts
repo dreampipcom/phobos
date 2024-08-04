@@ -37,6 +37,8 @@ const createWindow = () => {
   } else {
     mainWindow.loadFile(path.join(__dirname, `../renderer/${MAIN_WINDOW_VITE_NAME}/index.html`));
   }
+
+  return mainWindow
   // Open the DevTools.
   // mainWindow.webContents.openDevTools();
 };
@@ -51,16 +53,23 @@ app.whenReady().then(() => {
     if (mainWindow) {
       if (mainWindow.isMinimized()) mainWindow.restore()
       mainWindow.focus()
+          // the commandLine is array of strings in which last element is deep link url
+      dialog.showErrorBox('Welcome Back', `You arrived from: ${commandLine.pop()}`)
+      mainWindow.loadURL(commandLine.pop().replace('web+dreampip://', 'http://'))
     }
-    // the commandLine is array of strings in which last element is deep link url
-    // dialog.showErrorBox('Welcome Back', `You arrived from: ${commandLine.pop()}`)
-    mainWindow.loadURL(commandLine.pop().replace('web+dreampip://', 'http://'))
   })
 
   // Handle the protocol. In this case, we choose to show an Error Box.
   app.on('open-url', (event, url) => {
     dialog.showErrorBox('Welcome Back', `You arrived from: ${url}`)
-    mainWindow.loadURL(commandLine.pop().replace('web+dreampip://', 'http://'))
+
+    if (mainWindow) {
+      if (mainWindow.isMinimized()) mainWindow.restore()
+      mainWindow.focus()
+          // the commandLine is array of strings in which last element is deep link url
+      // dialog.showErrorBox('Welcome Back', `You arrived from: ${commandLine.pop()}`)
+      mainWindow.loadURL(url.replace('web+dreampip://', 'http://'))
+    }
   })
 
 })
