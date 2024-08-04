@@ -17,12 +17,14 @@ const config: ForgeConfig = {
   rebuildConfig: {},
   makers: [
     new MakerSquirrel({
-        name: 'DreamPip',
-      },),
+      name: 'DreamPip',
+    }),
     new MakerZIP({}, ['darwin']),
-    new MakerRpm({options: {
+    new MakerRpm({
+      options: {
         name: 'DreamPip',
-      }}),
+      },
+    }),
     new MakerDeb({
       options: {
         name: 'DreamPip',
