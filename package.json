@@ -4,6 +4,9 @@
   "version": "0.0.1",
   "description": "DreamPip's Desktop App",
   "main": ".vite/build/main.js",
+  "packagerConfig": {
+      "executableName": "DreamPip"
+  },
   "build": {
     "appID": "@dreampipcom/phobos",
     "productName": "DreamPip",
