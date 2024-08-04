@@ -61,7 +61,7 @@ jobs:
 
   publish-package-macos-x64:
     name: phobos::Publish::package-macos-x64
-    runs-on: macos-latest-large
+    runs-on: macos-13-large
     permissions:
       contents: write
       packages: write
