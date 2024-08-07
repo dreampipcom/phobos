@@ -1,7 +1,7 @@
 {
   "name": "DreamPip",
   "productName": "DreamPip",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "DreamPip's Desktop App",
   "main": ".vite/build/main.js",
   "build": {
