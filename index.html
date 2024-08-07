@@ -2,11 +2,39 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Hello World!</title>
+    <title>DreamPip</title>
+    <script>
+      const home = 'https://alpha.dreampip.com';
+      const getHome = async () => {
+        try {
+          return await fetch(home);
+        } catch (e) {
+          return { ok: false, status: 500, message: JSON.stringify(e) };
+        }
+      };
+      const init = async () => {
+        const response = await getHome();
+        if (response.ok && response.status === 200) {
+          window.location.href = home;
+        } else {
+          setTimeout(() => init(), 2000);
+        }
+      };
+
+      init();
+    </script>
   </head>
-  <body>
-    <h1>💖 Hello World!</h1>
-    <p>Welcome to your Electron application.</p>
+  <body
+    style="
+      height: 100vh;
+      width: 100vw;
+      background-color: #353535;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    "
+  >
+    <img style="max-width: 320px" src="./icons/icon-white.svg" alt="DreamPip Logo" />
     <script type="module" src="/src/renderer.ts"></script>
   </body>
 </html>
