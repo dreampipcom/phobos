@@ -47,7 +47,7 @@ const itsReady = () => {
       mainWindow.focus();
       // the commandLine is array of strings in which last element is deep link url
       dialog.showErrorBox('Welcome Back', `You arrived from: ${commandLine.pop()}`);
-      mainWindow.loadURL(commandLine.pop().replace('web+dreampip://', 'http://'));
+      mainWindow.loadURL(commandLine.pop().replace('web+dreampip://', 'https://'));
     }
   });
 
@@ -60,7 +60,7 @@ const itsReady = () => {
       mainWindow.focus();
       // the commandLine is array of strings in which last element is deep link url
       // dialog.showErrorBox('Welcome Back', `You arrived from: ${commandLine.pop()}`)
-      mainWindow.loadURL(url.replace('web+dreampip://', 'http://'));
+      mainWindow.loadURL(url.replace('web+dreampip://', 'https://'));
     }
   });
 };
